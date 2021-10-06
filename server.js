@@ -8,8 +8,10 @@ server.use(cors());
 server.use(express.json());
 
 const loginRouter = require("./auth/auth-router.js");
+const profileCreator = require("./profile/profile-router.js");
 
 server.use("/api/auth", loginRouter);
+server.use("/profile", profileCreator);
 
 server.get("/", (req, res) => {
   res.send("Your server is up and running!!!");
