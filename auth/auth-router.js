@@ -3,8 +3,9 @@ const Users = require("./auth-model.js");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const secret = require("../secrets/secrets");
+const { validateRegistration } = require( "../middleware/registration.middleware.js" );
 
-router.post("/register", (req, res) => {
+router.post("/register", validateRegistration, (req, res) => {
   // implement registration
   let userData = req.body;
   const hash = bcrypt.hashSync(userData.password, 12);
