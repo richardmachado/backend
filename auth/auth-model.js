@@ -1,13 +1,5 @@
 const db = require("../data/dbConfig.js");
 
-module.exports = {
-  find,
-  findById,
-  findBy,
-  insert,
-  update,
-};
-
 function find() {
   return db("users").select("id", "username", "password");
 }
@@ -15,6 +7,10 @@ function find() {
 function findById(id) {
   return db("users").select("id", "username").where({ id }).first();
 }
+
+const findUserByCriteria = (field, arg) => {
+  return db("users").where(field, "=", arg).first();
+};
 
 function findBy(data) {
   return db("users").where(data);
@@ -31,3 +27,12 @@ async function update(id, updates) {
     .update({ password: updates.password });
   return db("users").where({ id }).first();
 }
+
+module.exports = {
+  find,
+  findById,
+  findBy,
+  insert,
+  update,
+  findUserByCriteria,
+};
