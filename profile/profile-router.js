@@ -1,9 +1,10 @@
 const express = require("express");
+const { validateProfile } = require("../middleware/profile.middleware");
 const Profile = require("./profile-model");
 const app = express.Router();
 
 // adds a profile
-app.post("/", (req, res) => {
+app.post("/", validateProfile, (req, res) => {
   let userData = req.body;
 
   Profile.insert(userData)
