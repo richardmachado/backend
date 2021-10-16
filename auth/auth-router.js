@@ -6,6 +6,7 @@ const secret = require("../secrets/secrets");
 const {
   validateRegistration,
 } = require("../middleware/registration.middleware.js");
+const { validateLogin } = require("../middleware/login.middleware.js");
 
 router.post("/register", validateRegistration, (req, res) => {
   // implement registration
@@ -36,7 +37,7 @@ router.put("/changepassword/:id", async (req, res) => {
   res.status(201).json({ password: updatedPassword });
 });
 
-router.post("/login", (req, res) => {
+router.post("/login", validateLogin, (req, res) => {
   // implement login
   const { username, password } = req.body;
   Users.findBy({ username })
