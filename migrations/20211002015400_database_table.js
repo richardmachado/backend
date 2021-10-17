@@ -6,7 +6,7 @@ exports.up = async function (knex) {
       table.string("password").notNullable();
     })
     .createTable("profile", (table) => {
-      table.increments("id").unique();
+      table.increments("id");
       table.string("first_name", 24).notNullable();
       table.string("last_name", 24).notNullable();
       table.string("age", 4).notNullable();
@@ -22,5 +22,6 @@ exports.up = async function (knex) {
 };
 
 exports.down = async function (knex) {
-  await knex.schema.dropTableIfExists("users").dropTableIfExists("profile");
+  await knex.schema.dropTableIfExists( "users" );
+  await knex.schema.dropTableIfExists( "profile" );
 };

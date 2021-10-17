@@ -1,8 +1,8 @@
 const database = require("../data/dbConfig.js");
 
-const add = (profile) => {
-  return database("profile").insert(profile).returning("id");
-};
+// const add = (profile) => {
+//   return database("profile").insert(profile).returning("id");
+// };
 
 async function getMyProfile(user_id) {
   return database("profile")
@@ -12,7 +12,7 @@ async function getMyProfile(user_id) {
 
 async function insert(profileData) {
   const [id] = await database("profile").insert(profileData, "id");
-  return database("profile").where({ id }).first();
+  return database("users").where({ id }).first();
 }
 
 function findProfileById(id) {
@@ -20,7 +20,7 @@ function findProfileById(id) {
 }
 
 module.exports = {
-  add,
+  // add,
   getMyProfile,
   insert,
   findProfileById,

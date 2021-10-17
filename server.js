@@ -4,6 +4,9 @@ const helmet = require("helmet");
 const morgan = require("morgan");
 const server = express();
 
+const loginRouter = require("./auth/auth-router.js");
+const profileCreator = require("./profile/profile-router.js");
+
 server.use(express.json());
 server.use(helmet());
 server.use(cors());
@@ -17,8 +20,6 @@ server.use(
   })
 );
 
-const loginRouter = require("./auth/auth-router.js");
-const profileCreator = require("./profile/profile-router.js");
 
 server.use("/api/auth", loginRouter);
 server.use("/profile", profileCreator);
