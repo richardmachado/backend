@@ -6,7 +6,7 @@ const app = express.Router();
 // adds a profile
 app.post("/", validateProfile, (req, res) => {
   let userData = req.body;
-  console.log("user", userData)
+  console.log("user", userData);
 
   Profile.insert(userData)
     .then(() => {

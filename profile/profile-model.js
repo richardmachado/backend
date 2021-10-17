@@ -19,9 +19,14 @@ function findProfileById(id) {
   return database("profile").where({ id });
 }
 
+const findProfileByCriteria = (field, arg) => {
+  return database("profile").where(field, "=", arg).first();
+};
+
 module.exports = {
   // add,
   getMyProfile,
   insert,
   findProfileById,
+  findProfileByCriteria
 };

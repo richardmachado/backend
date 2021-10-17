@@ -22,6 +22,6 @@ exports.up = async function (knex) {
 };
 
 exports.down = async function (knex) {
-  await knex.schema.dropTableIfExists( "users" );
-  await knex.schema.dropTableIfExists( "profile" );
+  await knex.schema.dropTableIfExists("users");
+  await knex.schema.dropTableIfExists("profile");
 };

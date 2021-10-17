@@ -20,7 +20,6 @@ server.use(
   })
 );
 
-
 server.use("/api/auth", loginRouter);
 server.use("/profile", profileCreator);
 
