@@ -1,7 +1,9 @@
 const express = require("express");
-const { validateProfile } = require("../middleware/profile.middleware");
+const { validateProfile, validateEditProfile } = require("../middleware/profile.middleware");
 const Profile = require("./profile-model");
 const app = express.Router();
+
+const dbConfig = require("../data/dbConfig");
 
 // adds a profile
 app.post("/", validateProfile, (req, res) => {
@@ -33,6 +35,17 @@ app.get("/:id", (req, res) => {
     })
     .catch((err) => {
       res.status(500).json({ errorMessage: "Failed to get profile. ", err });
+    });
+} );
+
+//edits your profile
+
+app.put("/:id", validateEditProfile, (req, res) => {
+  dbConfig("profile")
+    .where({ id: req.params.id })
+    .update(req.body)
+    .then(() => {
+      res.status(200).json({message:"Thank you for updating your profile"});
     });
 });
 
