@@ -17,7 +17,6 @@ async function insert(profileData) {
 
 function findProfileById(id) {
   return database("profile").where({ id });
-  
 }
 
 function editProfile(changes, id) {
@@ -33,7 +32,6 @@ function editProfile(changes, id) {
     });
 }
 
-
 const findProfileByCriteria = (field, arg) => {
   return database("profile").where(field, "=", arg).first();
 };
@@ -44,5 +42,5 @@ module.exports = {
   insert,
   editProfile,
   findProfileById,
-  findProfileByCriteria
+  findProfileByCriteria,
 };

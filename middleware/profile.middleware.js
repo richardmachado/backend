@@ -35,10 +35,9 @@ const validateProfile = catchAsync(async (req, res, next) => {
 });
 
 const validateEditProfile = catchAsync(async (req, res, next) => {
-
   const userIdByProfile = req.body.user_id;
-  const idByProfile = parseInt(req.params.id) ;
-  
+  const idByProfile = parseInt(req.params.id);
+
   if (userIdByProfile !== idByProfile) {
     return res
       .status(403)
