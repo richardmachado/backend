@@ -4,7 +4,9 @@
   "description": "starting a new backend, no purpose yet, will update",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon index.js"
+    "start": "nodemon index.js",
+    "rollback": "knex migrate:rollback",
+    "latest": "knex migrate:latest"
   },
   "repository": {
     "type": "git",

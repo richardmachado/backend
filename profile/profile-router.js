@@ -2,15 +2,18 @@ const express = require("express");
 const {
   validateProfile,
   validateEditProfile,
+  validateDuplicateProfiles,
 } = require("../middleware/profile.middleware");
 const Profile = require("./profile-model");
 const app = express.Router();
 
 const dbConfig = require("../data/dbConfig");
+const restrictedMiddleware = require("../middleware/restricted.middleware");
 
 // adds a profile
-app.post("/", validateProfile, (req, res) => {
+app.post("/", validateProfile, validateDuplicateProfiles, (req, res) => {
   let userData = req.body;
+  console.log(userData);
   Profile.insert(userData)
     .then(() => {
       res.status(200).json({

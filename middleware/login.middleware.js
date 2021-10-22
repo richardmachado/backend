@@ -8,10 +8,6 @@ const validateLogin = catchAsync(async (req, res, next) => {
   if ((!username, !password)) {
     return res.status(403).json({ error: "One or more fields are missing" });
   }
-  req.user = {
-    username,
-    password,
-  };
 
   const userByUsername = await User.findUserByCriteria("username", username);
 
