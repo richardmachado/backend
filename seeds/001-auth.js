@@ -10,12 +10,14 @@ exports.seed = function (knex) {
           username: "richard1",
           password:
             "$2a$12$GMts6/RkdasN0T1x/9nwueVgTfdtKtXDvqWW2JNJXvnOSMQ4J.j3u",
+          isAdmin: true
         },
         {
           id: 2,
           username: "richard2",
           password:
             "$2a$12$GMts6/RkdasN0T1x/9nwueVgTfdtKtXDvqWW2JNJXvnOSMQ4J.j3u",
+          isAdmin: false
         },
       ]);
     });

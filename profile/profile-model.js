@@ -36,6 +36,9 @@ const findProfileByCriteria = (field, arg) => {
   return database("profile").where(field, "=", arg).first();
 };
 
+function findAllUsers() {
+  return database("profile").select("*");
+}
 module.exports = {
   // add,
   getMyProfile,
@@ -43,4 +46,5 @@ module.exports = {
   editProfile,
   findProfileById,
   findProfileByCriteria,
+  findAllUsers
 };

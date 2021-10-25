@@ -1,7 +1,6 @@
 const express = require("express");
 const {
   validateProfile,
-  validateEditProfile,
   validateDuplicateProfiles,
 } = require("../middleware/profile.middleware");
 const Profile = require("./profile-model");
@@ -44,13 +43,20 @@ app.get("/:id", (req, res) => {
 
 //edits your profile
 
-app.put("/:id", validateEditProfile, (req, res) => {
+app.put("/:id",  (req, res) => {
   dbConfig("profile")
     .where({ id: req.params.id })
     .update(req.body)
     .then(() => {
       res.status(200).json({ message: "Thank you for updating your profile" });
     });
+} );
+
+app.get("/", (req, res) => {
+  Profile.findAllUsers().then((user) => {
+    res.status(200).json(user);
+  });
 });
+
 
 module.exports = app;

@@ -38,22 +38,21 @@ const validateDuplicateProfiles = catchAsync(async (req, res, next) => {
 });
 
 //ensures id in axios request matches the id in the body of the json request
+// this does not work as user does not always match user_id
+// const validateEditProfile = catchAsync(async (req, res, next) => {
+//   const userIdByProfile = req.body.user_id;
+//   const idByProfile = parseInt(req.params.id);
 
-const validateEditProfile = catchAsync(async (req, res, next) => {
-  const userIdByProfile = req.body.user_id;
-  const idByProfile = parseInt(req.params.id);
+//   if (userIdByProfile !== idByProfile) {
+//     return res
+//       .status(403)
+//       .json({ error: "You cannot edit someone else's profile" });
+//   }
 
-  if (userIdByProfile !== idByProfile) {
-    return res
-      .status(403)
-      .json({ error: "You cannot edit someone else's profile" });
-  }
-
-  next();
-});
+//   next();
+// });
 
 module.exports = {
   validateProfile,
-  validateEditProfile,
   validateDuplicateProfiles,
 };
