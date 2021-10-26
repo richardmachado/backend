@@ -6,7 +6,7 @@ const {
 const Profile = require("./profile-model");
 const app = express.Router();
 
-const dbConfig = require("../data/dbConfig");
+const dbConfig = require("../../data/dbConfig");
 const restrictedMiddleware = require("../middleware/restricted.middleware");
 
 // adds a profile

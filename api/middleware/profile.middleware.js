@@ -1,4 +1,4 @@
-const { catchAsync } = require("../../utils/catchAsync");
+const { catchAsync } = require("../utils/catchAsync");
 const Profile = require("../profile/profile-model");
 const User = require("../auth/auth-model");
 

@@ -1,4 +1,4 @@
-const database = require("../data/dbConfig.js");
+const database = require("../../data/dbConfig.js");
 
 // const add = (profile) => {
 //   return database("profile").insert(profile).returning("id");
