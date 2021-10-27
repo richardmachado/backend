@@ -3,8 +3,8 @@ exports.up = async function (knex) {
     .createTable("users", (table) => {
       table.increments("id").unique();
       table.string("username").unique().notNullable();
-      table.string( "password" ).notNullable();
-      table.boolean( "isAdmin" ).defaultTo( false );
+      table.string("password").notNullable();
+      table.boolean("isAdmin").defaultTo(toString(0));
     })
     .createTable("profile", (table) => {
       table.increments("id");
