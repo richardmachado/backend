@@ -6,7 +6,8 @@
   "scripts": {
     "start": "nodemon index.js",
     "rollback": "knex migrate:rollback",
-    "latest": "knex migrate:latest"
+    "latest": "knex migrate:latest",
+    "resetdb": "knex migrate:rollback && knex migrate:latest && knex seed:run"
   },
   "repository": {
     "type": "git",

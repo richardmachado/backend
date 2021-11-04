@@ -19,10 +19,26 @@ exports.up = async function (knex) {
         .inTable("users")
         .onUpdate("CASCADE")
         .onDelete("CASCADE");
+    })
+    .createTable("glucose_reading", (table) => {
+      table.increments("id");
+      table.integer("glucose_reading").notNullable();
+      table.timestamp("taken_at").notNullable().defaultTo(Date.now());
+      table.timestamp("created_at").notNullable().defaultTo(Date.now());
+      table.timestamp("updated_at").notNullable().defaultTo(Date.now());
+      table
+        .integer("profile_id")
+        .notNullable()
+        .unsigned()
+        .references("id")
+        .inTable("profile")
+        .onUpdate("CASCADE")
+        .onDelete("CASCADE");
     });
 };
 
 exports.down = async function (knex) {
-  await knex.schema.dropTableIfExists("users");
+  await knex.schema.dropTableIfExists("glucose_reading");
   await knex.schema.dropTableIfExists("profile");
+  await knex.schema.dropTableIfExists("users");
 };

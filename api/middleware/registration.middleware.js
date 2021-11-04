@@ -11,7 +11,7 @@ const validateRegistration = catchAsync(async (req, res, next) => {
 
   req.user = {
     username,
-  };  
+  };
 
   const userByUsername = await User.findUserByCriteria("username", username);
 

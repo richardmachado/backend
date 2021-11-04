@@ -1,9 +1,5 @@
 const database = require("../../data/dbConfig.js");
 
-// const add = (profile) => {
-//   return database("profile").insert(profile).returning("id");
-// };
-
 async function getMyProfile(user_id) {
   return database("profile")
     .select("id", "first_name", "last_name", "age", "user_id")

@@ -1,3 +1,3 @@
 # backend
 
-starting a new backend, no purpose yet, will update
+glucose reading charts and analysis

@@ -31,7 +31,7 @@ app.get("/:id", (req, res) => {
   Profile.findProfileById(id)
     .then((profile) => {
       if (profile < 1) {
-        res.status(404).json({ message: "There is no profile with that id" });
+        res.status(401).json({ message: "There is no profile with that id" });
       } else {
         res.json(profile);
       }

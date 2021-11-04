@@ -6,14 +6,19 @@ module.exports = {
     client: "sqlite3",
     connection: { filename: "./data/database.db3" },
     useNullAsDefault: true,
+        migrations: {
+      directory: "./data/migrations",
+    },
+    seeds: { directory: "./data/seeds" },
+  
   },
 
   production: {
     client: "pg",
     connection: `${process.env.DATABASE_URL}?ssl=no-verify`,
     migrations: {
-      directory: "./migrations",
+      directory: "./data/migrations",
     },
-    seeds: { directory: "./seeds" },
+    seeds: { directory: "./data/seeds" },
   },
 };

@@ -1,11 +1,15 @@
 const knex = require("knex");
-const knexfile = require("../knexfile.js");
+const settings = require("../knexfile.js");
 const chalk = require("chalk");
 require("dotenv").config();
 
 const env = process.env.NODE_ENV || "development";
 
-const config = knexfile[env];
-console.log("you are currently working on " + chalk.blue(env), "server");
+const config = settings[env];
+const connection = knex(config)
+console.log(
+  "you are currently working on " + chalk.blue.underline.bold(env),
+  "server"
+);
 
-module.exports = knex(config);
+module.exports = connection;
