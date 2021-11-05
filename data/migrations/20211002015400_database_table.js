@@ -24,7 +24,7 @@ exports.up = async function (knex) {
       table.increments("id");
       table.integer( "glucose_reading" ).notNullable();
       table.timestamps(false, true);
-      table.timestamp( "taken_at" ).notNullable().defaultTo("2000-01-01 01: 01: 01");
+      table.timestamp( "taken_at" ).notNullable();
       table
         .integer("profile_id")
         .notNullable()
