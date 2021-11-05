@@ -2,7 +2,7 @@ const { catchAsync } = require("../utils/catchAsync");
 const Profile = require("../profile/profile-model");
 const User = require("../auth/auth-model");
 
-const validateProfile = catchAsync(async (req, res, next) => {
+const validateProfileFields = catchAsync(async (req, res, next) => {
   //checks that all fields are entered
 
   const { first_name, last_name, age, user_id } = req.body;
@@ -53,6 +53,6 @@ const validateDuplicateProfiles = catchAsync(async (req, res, next) => {
 // });
 
 module.exports = {
-  validateProfile,
+  validateProfileFields,
   validateDuplicateProfiles,
 };

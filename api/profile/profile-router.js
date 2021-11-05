@@ -1,6 +1,6 @@
 const express = require("express");
 const {
-  validateProfile,
+  validateProfileFields,
   validateDuplicateProfiles,
 } = require("../middleware/profile.middleware");
 const Profile = require("./profile-model");
@@ -10,7 +10,7 @@ const dbConfig = require("../../data/dbConfig");
 const restrictedMiddleware = require("../middleware/restricted.middleware");
 
 // adds a profile
-app.post("/", validateProfile, validateDuplicateProfiles, (req, res) => {
+app.post("/", validateProfileFields, validateDuplicateProfiles, (req, res) => {
   let userData = req.body;
   console.log(userData);
   Profile.insert(userData)

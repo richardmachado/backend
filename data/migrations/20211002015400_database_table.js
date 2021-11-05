@@ -22,10 +22,9 @@ exports.up = async function (knex) {
     })
     .createTable("glucose_reading", (table) => {
       table.increments("id");
-      table.integer("glucose_reading").notNullable();
-      table.timestamp("taken_at").notNullable().defaultTo(Date.now());
-      table.timestamp("created_at").notNullable().defaultTo(Date.now());
-      table.timestamp("updated_at").notNullable().defaultTo(Date.now());
+      table.integer( "glucose_reading" ).notNullable();
+      table.timestamps(false, true);
+      table.timestamp( "taken_at" ).notNullable().defaultTo("2000-01-01 01: 01: 01");
       table
         .integer("profile_id")
         .notNullable()
