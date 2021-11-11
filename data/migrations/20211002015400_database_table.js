@@ -24,7 +24,14 @@ exports.up = async function (knex) {
       table.increments("id");
       table.integer( "glucose_reading" ).notNullable();
       table.timestamps(false, true);
-      table.timestamp( "taken_at" ).notNullable();
+      table.date( "taken_at" ).defaultTo(
+        new Date(
+          new Date().getFullYear(),
+          new Date().getMonth(),
+          new Date().getDate()
+        ).toUTCString()
+      );
+
       table
         .integer("profile_id")
         .notNullable()
