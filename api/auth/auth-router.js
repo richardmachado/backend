@@ -37,7 +37,7 @@ router.put("/changepassword/:id", async (req, res) => {
   res.status(201).json({ password: updatedPassword });
 });
 
-router.post("/login", validateLogin, (req, res) => {
+router.post("/login", (req, res) => {
   // implement login
   const { username, password } = req.body;
   Users.findBy({ username })

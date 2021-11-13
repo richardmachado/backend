@@ -27,7 +27,7 @@ const validateUserID = catchAsync( async ( req, res, next ) => {
 
   if (!userById) {
     return res
-      .status(403)
+      .status(404)
       .json({ error: "Cannot add profile as that user ID doesn't exist" });
   }
 
