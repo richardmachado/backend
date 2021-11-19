@@ -5,6 +5,7 @@ require("dotenv").config();
 
 const env = process.env.NODE_ENV || "development";
 
+
 const config = settings[env];
 const connection = knex(config)
 console.log(
