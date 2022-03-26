@@ -50,4 +50,22 @@ app.post("/", validateGlucoseFields, validateUserID, (req, res) => {
     });
 });
 
+//deletes a reading
+app.delete("/:id", (req, res) => {
+  const { id } = req.params;
+  Glucose.deleteReading(id)
+    .then( ( deleted ) => {
+      if (deleted) {
+        res.json({ removed: deleted });
+      } else {
+        res.status(404).json({ message: "No reading with that id exists" });
+      }
+    })
+    .catch((err) => {
+      res
+        .status(500)
+        .json( { errorMessage: "Failed to delete reading. You done mest up" } );
+    });
+});
+
 module.exports = app;
