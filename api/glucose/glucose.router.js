@@ -18,7 +18,7 @@ app.get("/", (req, res) => {
 });
 
 // retrieves your readings
-app.get("/:id", (req, res) => {
+app.get("/profilereadings/:id", (req, res) => {
   const { id } = req.params;
 
   Glucose.getMyReadings(id)
@@ -65,6 +65,24 @@ app.delete("/:id", (req, res) => {
       res
         .status(500)
         .json( { errorMessage: "Failed to delete reading. You done mest up" } );
+    });
+});
+
+//deletes all readings for a profile
+app.delete("/deleteallreadings/:id", (req, res) => {
+  const { id } = req.params;
+  Glucose.deleteAllReadingsById(id)
+    .then( ( deleted ) => {
+      if (deleted) {
+        res.json({ removed: deleted });
+      } else {
+        res.status(404).json({ message: "No reading for that profile exists" });
+      }
+    })
+    .catch((err) => {
+      res
+        .status(500)
+        .json( { errorMessage: "Failed to delete readings. You done mest up" } );
     });
 });
 

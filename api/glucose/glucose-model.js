@@ -18,15 +18,17 @@ async function insertReading(glucoseData) {
 }
 
 async function deleteReading(id) {
-  // const [id] = await database("glucose_reading").del(glucoseData, "id");
-  // return database("glucose_reading").where({ id }).first();
-//  return db("glucose_reading").where("id", id).del();
-  
- return database("glucose_reading").where({id:id}).del();
+  return database("glucose_reading").where({ id: id }).del();
 }
+
+async function deleteAllReadingsById( profile_id) {
+  return database("glucose_reading").where({ profile_id: profile_id }).del();
+}
+
 module.exports = {
   getAllReadings,
   getMyReadings,
   insertReading,
   deleteReading,
+  deleteAllReadingsById,
 };
